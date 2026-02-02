@@ -1,0 +1,44 @@
+# Wipe Nozzle, see auto_leveling.cpp:443
+[gcode_macro WIPE_NOZZLE]
+gcode:
+    SAVE_GCODE_STATE NAME=wipe_nozzle_saved_state 
+
+    G90
+
+    # Move to tray
+    G1 X202 F6000
+    G1 Y264.5 F6000
+
+    # Wipe
+    G1 X173 F8000
+    G1 X187
+    G1 X173
+    G1 X187
+    G1 X173
+
+    # Move a 2mm on Y
+    G1 Y262.5
+
+    # Wipe
+    G1 X187 F8000
+    G1 X173
+    G1 X187
+    G1 X173
+    G1 X187
+    G1 X173
+
+    # Add some clearance
+    G1 Y250
+
+    # Move back to tray
+    G1 X202
+    G1 Y264.5 F1200
+
+    # Clear command queue
+    M400
+    
+    RESTORE_GCODE_STATE NAME=wipe_nozzle_saved_state 
+
+[gcode_macro M729]
+gcode:
+    WIPE_NOZZLE
