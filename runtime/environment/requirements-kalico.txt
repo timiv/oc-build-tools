@@ -1,0 +1,11 @@
+# Kalico (klippy) runtime dependencies
+# Sourced from kalico/pyproject.toml [project.dependencies]
+# Pinned for Python >= 3.13
+
+cffi==1.17.1
+greenlet==3.1
+Jinja2==3.1.5
+markupsafe==2.1.5
+numpy~=2.2
+pyserial==3.4
+python-can~=4.5
